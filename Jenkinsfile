@@ -27,7 +27,7 @@ pipeline{
 		stage("sonar") {
             steps {
                 script {
-					def scannerHome = tool 'sonarqube-scanner'
+					def scannerHome = tool 'sonarqube'
 
                     // Prepare SonarQube environment
                     def sonarProperties = """
