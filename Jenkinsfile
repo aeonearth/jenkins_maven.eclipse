@@ -27,8 +27,6 @@ pipeline{
 		stage("sonar") {
             steps {
                 script {
-					def scannerHome = tool 'sonarqube'
-
                     // Prepare SonarQube environment
                     def sonarProperties = """
                         sonar.projectKey=jenkins_maven_eclipse
@@ -52,10 +50,10 @@ pipeline{
 
                     // Run SonarQube scan using the properties file
                     withSonarQubeEnv('sonarqube_server') {
-                    	bat "${scannerHome}/bin/sonar-scanner -Dproject.settings=sonar-project.properties"
+                    	bat "mvn sonar:sonar"
                 	}
                 }
-            }
-        }
+             }
+ }
 	}
 	}
